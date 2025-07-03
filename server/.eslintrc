@@ -1,0 +1,23 @@
+{
+  "extends": "eslint-config-egg",
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "rules": {
+    "indent": ["error", 2],
+    "quotes": "off",
+    "semi": ["error", "always"],
+    "no-console": "off",
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "comma-dangle": "off",
+    "object-curly-spacing": ["error", "always"],
+    "array-bracket-spacing": "off",
+    "space-before-function-paren": "off",
+    "arrow-parens": "off"
+  }
+}

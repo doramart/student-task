@@ -1,0 +1,243 @@
+// Pay Wallet Style Guide - Design System Variables
+// 基于 NEW_UI.json 设计规范
+
+// ===========================================
+// 主色彩系统 (Color Palette)
+// ===========================================
+@primary-color: #6B4EEB;           // 主色调
+@secondary-color: #E0E0E0;          // 辅助色
+@background-light: #FFFFFF;         // 浅色背景
+@background-dark: #F0F2F5;          // 深色背景
+@text-dark: #333333;                // 深色文字
+@text-light: #666666;               // 浅色文字
+@accent-green: #4CAF50;             // 绿色强调色
+@accent-blue: #2196F3;              // 蓝色强调色
+@accent-red: #F44336;               // 红色强调色
+@chart-green: #4CAF50;              // 图表绿色
+@chart-blue: #2196F3;               // 图表蓝色
+@chart-grey: #E0E0E0;               // 图表灰色
+
+// ===========================================
+// 语义化颜色 (Semantic Colors)
+// ===========================================
+@success-color: @accent-green;
+@warning-color: #FF9800;
+@error-color: @accent-red;
+@info-color: @accent-blue;
+
+// ===========================================
+// 文字颜色系统 (Typography Colors)
+// ===========================================
+@text-color: @text-dark;
+@text-color-secondary: @text-light;
+@text-color-inverse: @background-light;
+@text-color-placeholder: @text-light;
+
+// ===========================================
+// 背景颜色系统 (Background Colors)
+// ===========================================
+@background-color-base: @background-dark;
+@background-color-light: @background-light;
+@background-color-dark: @background-dark;
+@background-card: @background-light;
+
+// ===========================================
+// 边框颜色系统 (Border Colors)
+// ===========================================
+@border-color-base: @secondary-color;
+@border-color-light: fade(@secondary-color, 50%);
+@border-color-focus: @primary-color;
+
+// ===========================================
+// 字体系统 (Typography)
+// ===========================================
+@font-family-base: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+@font-size-h1: 26px;
+@font-size-h2: 22px;
+@font-size-h3: 20px;
+@font-size-base: 16px;
+@font-size-lg: 18px;
+@font-size-sm: 14px;
+@font-size-xs: 12px;
+@font-size-xxs: 10px;
+@font-size-tiny: 8px;
+
+// 图标字体大小
+@icon-size-base: 22px;
+@icon-size-lg: 24px;
+
+@font-weight-regular: 400;
+@font-weight-medium: 500;
+@font-weight-semibold: 600;
+@font-weight-bold: 700;
+
+@line-height-base: 1.5;
+@line-height-heading: 1.2;
+
+// ===========================================
+// 间距系统 (Spacing)
+// ===========================================
+@spacing-unit: 8px;
+@spacing-xs: @spacing-unit;          // 8px
+@spacing-sm: @spacing-unit * 2;      // 16px
+@spacing-md: @spacing-unit * 3;      // 24px
+@spacing-lg: @spacing-unit * 4;      // 32px
+@spacing-xl: @spacing-unit * 6;      // 48px
+
+// 移动端紧凑间距
+@spacing-mobile-xs: 4px;             // 超小间距
+@spacing-mobile-sm: 6px;             // 小间距
+@spacing-mobile-md: 10px;            // 中等间距
+
+// ===========================================
+// 圆角系统 (Border Radius)
+// ===========================================
+@border-radius-xs: 4px;
+@border-radius-sm: 8px;
+@border-radius-md: 12px;
+@border-radius-lg: 16px;
+@border-radius-xl: 24px;
+@border-radius-round: 50%;
+
+// ===========================================
+// 阴影系统 (Shadows)
+// ===========================================
+@shadow-soft: 0px 4px 12px rgba(0, 0, 0, 0.08);
+@shadow-card: 0px 2px 8px rgba(0, 0, 0, 0.05);
+@shadow-button: 0px 2px 4px rgba(107, 78, 235, 0.2);
+@shadow-float: 0px 8px 24px rgba(0, 0, 0, 0.12);
+
+// ===========================================
+// 组件特定变量 (Component Variables)
+// ===========================================
+
+// 按钮系统
+@button-primary-bg: @primary-color;
+@button-primary-color: @background-light;
+@button-primary-border: @primary-color;
+@button-primary-hover-bg: lighten(@primary-color, 5%);
+@button-primary-active-bg: darken(@primary-color, 5%);
+
+@button-secondary-bg: transparent;
+@button-secondary-color: @primary-color;
+@button-secondary-border: @primary-color;
+@button-secondary-hover-bg: fade(@primary-color, 10%);
+
+@button-border-radius: @border-radius-lg;
+@button-padding-horizontal: @spacing-sm;
+@button-padding-vertical: @spacing-xs;
+
+// 卡片系统
+@card-background: @background-light;
+@card-border-radius: @border-radius-lg;
+@card-padding: @spacing-md;
+@card-shadow: @shadow-card;
+
+@card-gradient-bg: linear-gradient(135deg, #6B4EEB 0%, #4D3C9D 100%);
+@card-gradient-color: @background-light;
+
+// 导航系统
+@nav-background: @background-light;
+@nav-color-active: @primary-color;
+@nav-color-inactive: @text-light;
+@nav-shadow: @shadow-soft;
+@nav-icon-size: 24px;
+
+// 输入框系统
+@input-background: @background-dark;
+@input-border-color: transparent;
+@input-border-radius: @border-radius-sm;
+@input-padding: @spacing-sm;
+@input-color: @text-dark;
+@input-placeholder-color: @text-light;
+@input-focus-border-color: @primary-color;
+
+// 图表系统
+@chart-segment-colors: @chart-green, @chart-blue, @chart-grey;
+@chart-text-color: @text-dark;
+@chart-bar-income-color: @chart-green;
+@chart-bar-expense-color: @primary-color;
+@chart-axis-color: @text-light;
+
+// 列表项系统
+@list-item-background: @background-light;
+@list-item-padding: @spacing-sm;
+@list-item-border-radius: @border-radius-sm;
+@list-item-avatar-size: 40px;
+@list-item-name-color: @text-dark;
+@list-item-date-color: @text-light;
+@list-item-amount-positive-color: @chart-green;
+@list-item-amount-negative-color: @text-dark;
+
+// ===========================================
+// 布局变量 (Layout)
+// ===========================================
+@layout-header-height: 64px;
+@layout-footer-height: 50px;
+@layout-tabbar-height: 50px;  // 底部导航栏高度
+@layout-padding: @spacing-md;
+@layout-component-spacing: @spacing-sm;
+
+// ===========================================
+// 响应式断点 (Responsive Breakpoints)
+// ===========================================
+@screen-xs: 480px;
+@screen-sm: 576px;
+@screen-md: 768px;
+@screen-lg: 992px;
+@screen-xl: 1200px;
+@screen-xxl: 1600px; 
+
+// ===========================================
+// 动画变量 (Animation)
+// ===========================================
+@animation-duration-fast: 0.2s;
+@animation-duration-base: 0.3s;
+@animation-duration-slow: 0.5s;
+@animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+// ===========================================
+// Z-index 层级 (Z-index)
+// ===========================================
+@z-index-base: 1;
+@z-index-fixed: 100;
+@z-index-modal: 200;
+@z-index-overlay: 300;
+@z-index-tooltip: 400;
+
+// ===========================================
+// PWA 和安全区域适配 (PWA & Safe Area)
+// ===========================================
+
+// 安全区域变量
+@safe-area-inset-top: env(safe-area-inset-top);
+@safe-area-inset-right: env(safe-area-inset-right);
+@safe-area-inset-bottom: env(safe-area-inset-bottom);
+@safe-area-inset-left: env(safe-area-inset-left);
+
+// PWA状态栏适配
+@status-bar-height: 44px;
+@status-bar-height-safe: calc(@status-bar-height + @safe-area-inset-top);
+
+// 导航栏安全区域适配
+@nav-height-safe: calc(@layout-header-height + @safe-area-inset-top);
+@tabbar-height-safe: calc(@layout-tabbar-height + @safe-area-inset-bottom);
+
+// PWA主题配置
+@pwa-theme-color: @primary-color;
+@pwa-background-color: @background-dark;
+@pwa-status-bar-style: default; // default | black | black-translucent
+
+// PWA安装提示样式
+@install-prompt-bg: @card-background;
+@install-prompt-shadow: @shadow-float;
+@install-prompt-border-radius: @border-radius-xl @border-radius-xl 0 0;
+@install-prompt-padding: @spacing-lg @spacing-md;
+
+// 触觉反馈相关
+@haptic-feedback-enabled: true;
+
+// PWA特有的交互样式
+@pwa-touch-action: manipulation; // 禁用双击缩放
+@pwa-user-select: none; // 禁用文本选择（适用于按钮等）
+@pwa-webkit-tap-highlight: transparent; // 移除点击高亮 

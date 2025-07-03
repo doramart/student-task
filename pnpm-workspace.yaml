@@ -1,0 +1,7 @@
+packages:
+  # 客户端应用
+  - "client"
+  # 服务端应用
+  - "server"
+  # 如果有共享包，可以添加
+  # - 'packages/*'

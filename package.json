@@ -1,0 +1,48 @@
+{
+  "name": "student-task-monorepo",
+  "version": "1.0.0",
+  "description": "全栈学生任务管理系统 - 使用 pnpm workspace 管理的 monorepo",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "dev": "concurrently \"pnpm run dev:server\" \"pnpm run dev:client\"",
+    "dev:client": "pnpm --filter client dev",
+    "dev:server": "pnpm --filter server dev",
+    "build": "pnpm run build:client",
+    "build:client": "cd client && NODE_ENV=production npm run build",
+    "build:server": "pnpm --filter server build",
+    "start": "pnpm --filter server start",
+    "test": "pnpm run test:client && pnpm run test:server",
+    "test:client": "pnpm --filter client test",
+    "test:server": "pnpm --filter server test",
+    "lint": "pnpm run lint:client && pnpm run lint:server",
+    "lint:client": "pnpm --filter client lint",
+    "lint:server": "pnpm --filter server lint",
+    "clean": "pnpm run clean:deps && pnpm run clean:builds",
+    "clean:deps": "rm -rf node_modules client/node_modules server/node_modules",
+    "clean:builds": "rm -rf client/dist server/dist server/app/public/js server/app/public/css server/app/public/index.html",
+    "fresh": "pnpm run clean && pnpm install",
+    "deploy": "pnpm run build && pnpm run start"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@8.15.0",
+  "author": "Developer",
+  "license": "MIT",
+  "keywords": [
+    "monorepo",
+    "vue",
+    "eggjs",
+    "fullstack",
+    "student-task"
+  ]
+}

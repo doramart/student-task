@@ -1,0 +1,57 @@
+{
+  "name": "@student-task/server",
+  "version": "1.0.0",
+  "description": "学生任务管理系统后端服务 - 基于 Egg.js 的 RESTful API",
+  "private": true,
+  "egg": {
+    "framework": "egg"
+  },
+  "scripts": {
+    "start": "egg-scripts start --daemon --title=eggjs-restful-scaffold --require dotenv/config",
+    "stop": "egg-scripts stop --title=eggjs-restful-scaffold",
+    "dev": "egg-bin dev --require dotenv/config",
+    "debug": "egg-bin debug",
+    "test": "npm run lint -- --fix && npm run test-local",
+    "test-local": "egg-bin test",
+    "test-db": "node scripts/test-db.js",
+    "setup-data": "node scripts/test-db.js",
+    "cov": "egg-bin cov",
+    "lint": "eslint .",
+    "ci": "npm run lint && npm run cov",
+    "autod": "autod"
+  },
+  "dependencies": {
+    "axios": "^1.9.0",
+    "crypto": "^1.0.1",
+    "dayjs": "^1.11.10",
+    "dotenv": "^17.0.0",
+    "egg": "^3.17.0",
+    "egg-cookies": "^2.10.1",
+    "egg-cors": "^2.2.3",
+    "egg-mongoose": "^3.3.1",
+    "egg-scripts": "^2.11.0",
+    "egg-session": "^3.3.0",
+    "egg-validate": "^2.0.2",
+    "js-cache": "^1.0.3",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.5.0",
+    "nodemailer": "^7.0.3",
+    "qiniu": "^7.14.0",
+    "request": "^2.88.2",
+    "request-promise-native": "^1.0.9"
+  },
+  "devDependencies": {
+    "autod": "^3.0.1",
+    "autod-egg": "^1.1.0",
+    "egg-bin": "^5.8.0",
+    "egg-ci": "^2.0.0",
+    "egg-mock": "^5.9.0",
+    "eslint": "^8.49.0",
+    "eslint-config-egg": "^12.1.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "author": "Scaffold Generator",
+  "license": "MIT"
+}

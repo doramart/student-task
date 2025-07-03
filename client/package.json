@@ -1,0 +1,64 @@
+{
+  "name": "@student-task/client",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "vue-cli-service serve --port 8080",
+    "serve": "vue-cli-service serve",
+    "build": "NODE_ENV=production && vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "preview": "npm run build && http-server dist -p 8080"
+  },
+  "dependencies": {
+    "axios": "^1.6.2",
+    "core-js": "^3.8.3",
+    "dayjs": "^1.11.10",
+    "lib-flexible": "^0.3.2",
+    "vant": "^2.12.54",
+    "vue": "^2.6.14",
+    "vue-router": "^3.6.5",
+    "vuex": "^3.6.2",
+    "vxe-table": "^3.8.12",
+    "xe-utils": "^3.5.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.27.5",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "@vue/eslint-config-standard": "^9.0.1",
+    "babel-plugin-import": "^1.13.8",
+    "eslint": "^7.32.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^7.2.1",
+    "eslint-plugin-standard": "^5.0.0",
+    "eslint-plugin-vue": "^8.0.3",
+    "less": "^4.3.0",
+    "less-loader": "^12.3.0",
+    "postcss": "^8.0.0",
+    "postcss-pxtorem": "^6.0.0",
+    "vue-template-compiler": "^2.6.14",
+    "workbox-webpack-plugin": "^7.3.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "@babel/eslint-parser"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

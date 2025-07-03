@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0,user-scalable=no,viewport-fit=cover"
+    />
+
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#6B4EEB" />
+    <meta name="msapplication-TileColor" content="#6B4EEB" />
+    <meta name="msapplication-navbutton-color" content="#6B4EEB" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="任务管理" />
+    <meta name="application-name" content="学生任务管理" />
+    <meta name="description" content="高效的学生任务管理和学习统计工具" />
+    <meta name="keywords" content="任务管理,学习统计,学生工具,作业管理" />
+
+    <!-- Apple Touch Icons -->
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="<%= BASE_URL %>icons/icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="<%= BASE_URL %>icons/icon-192x192.png"
+    />
+
+    <!-- Favicon and Icons -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="<%= BASE_URL %>icons/icon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="<%= BASE_URL %>icons/icon-16x16.png"
+    />
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+
+    <!-- Manifest -->
+    <link rel="manifest" href="<%= BASE_URL %>manifest.json" />
+
+    <!-- Windows Metro Tiles -->
+    <meta
+      name="msapplication-TileImage"
+      content="<%= BASE_URL %>icons/icon-144x144.png"
+    />
+    <meta
+      name="msapplication-config"
+      content="<%= BASE_URL %>browserconfig.xml"
+    />
+
+    <!-- Preconnect for better performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+    <noscript>
+      <div
+        style="
+          text-align: center;
+          padding: 50px 20px;
+          font-family: Arial, sans-serif;
+        "
+      >
+        <h2>JavaScript Required</h2>
+        <p><strong>抱歉，这个应用需要启用JavaScript才能正常运行。</strong></p>
+        <p>请在您的浏览器设置中启用JavaScript，然后刷新页面。</p>
+      </div>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
