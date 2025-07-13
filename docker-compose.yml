@@ -1,0 +1,117 @@
+version: "3.8"
+
+services:
+  # MongoDB 数据库服务
+  mongodb:
+    image: mongo:7.0
+    container_name: student-task-mongodb
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USERNAME:-admin}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD:-password123}
+      MONGO_INITDB_DATABASE: ${MONGO_DATABASE:-student_task_db}
+    volumes:
+      - mongodb_data:/data/db
+      - mongodb_config:/data/configdb
+      - ./docker/mongodb/init:/docker-entrypoint-initdb.d:ro
+    ports:
+      - "${MONGO_PORT:-27017}:27017"
+    networks:
+      - student-task-network
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # 应用服务
+  student-task-app:
+    image: ${DOCKER_IMAGE:-doramart/student-task:latest}
+    container_name: student-task-app
+    restart: unless-stopped
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    environment:
+      # 基础配置
+      NODE_ENV: ${NODE_ENV:-production}
+      PORT: ${PORT:-7801}
+
+      # 数据库配置
+      MONGODB_URL: mongodb://${MONGO_ROOT_USERNAME:-admin}:${MONGO_ROOT_PASSWORD:-password123}@mongodb:27017/${MONGO_DATABASE:-student_task_db}?authSource=admin
+
+      # 应用密钥
+      APP_KEYS: ${APP_KEYS:-student-task_$(date +%s)_1000}
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-7d}
+      JWT_ISSUER: ${JWT_ISSUER:-student-task-system}
+
+      # 邮件配置（可选）
+      MAIL_SERVICE: ${MAIL_SERVICE:-}
+      MAIL_PORT: ${MAIL_PORT:-}
+      MAIL_USER: ${MAIL_USER:-}
+      MAIL_PASS: ${MAIL_PASS:-}
+      MAIL_FROM: ${MAIL_FROM:-}
+
+      # 安全配置
+      CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:7801}
+      DOMAIN_WHITELIST: ${DOMAIN_WHITELIST:-http://localhost:7801}
+
+      # 日志配置
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      LOG_DIR: ${LOG_DIR:-logs}
+
+      # 缓存配置
+      CACHE_TTL: ${CACHE_TTL:-3600}
+    volumes:
+      - app_logs:/app/logs
+      - app_uploads:/app/uploads
+    ports:
+      - "${APP_PORT:-7801}:7801"
+    networks:
+      - student-task-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:7801/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  # Nginx 反向代理（可选）
+  nginx:
+    image: nginx:alpine
+    container_name: student-task-nginx
+    restart: unless-stopped
+    depends_on:
+      - student-task-app
+    volumes:
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d:ro
+      - nginx_logs:/var/log/nginx
+    ports:
+      - "${NGINX_PORT:-80}:80"
+      - "${NGINX_SSL_PORT:-443}:443"
+    networks:
+      - student-task-network
+    profiles:
+      - with-nginx
+
+volumes:
+  mongodb_data:
+    driver: local
+  mongodb_config:
+    driver: local
+  app_logs:
+    driver: local
+  app_uploads:
+    driver: local
+  nginx_logs:
+    driver: local
+
+networks:
+  student-task-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16

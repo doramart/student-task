@@ -1,0 +1,31 @@
+# 排除日志文件
+server/logs/
+server/run/
+
+# 排除开发文件
+server/.DS_Store
+server/**/.DS_Store
+server/.eslintrc
+server/.gitignore
+
+# 排除node_modules（会在容器内重新安装）
+server/node_modules/
+
+# 排除环境配置文件
+server/.env
+server/env.example
+
+# 排除Git相关文件
+.git/
+.gitignore
+
+# 排除文档和测试文件
+docs/
+*.md
+!server/README.md
+
+# 排除其他不必要的文件
+.DS_Store
+**/.DS_Store
+*.log
+*.tmp 
